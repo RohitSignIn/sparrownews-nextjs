@@ -10,9 +10,9 @@ export default function Carousel() {
           <Image
             src='https://sparrownews.in/news/neeraj-chopra-return-to-competition.webp'
             width={350}
-            height={350}
+            height={240}
             alt='Picture of the author'
-            className='rounded-md'
+            className='rounded-md w-[350px] h-[240px]'
           />
         </Link>
       </div>
@@ -21,9 +21,9 @@ export default function Carousel() {
           <Image
             src='https://sparrownews.in/news/power-book-two.webp'
             width={350}
-            height={350}
+            height={240}
             alt='Picture of the author'
-            className='rounded-md'
+            className='rounded-md w-[350px] h-[240px]'
           />
         </Link>
       </div>
@@ -32,9 +32,9 @@ export default function Carousel() {
           <Image
             src='https://sparrownews.in/news/taylor-swift-new-album-red.webp'
             width={350}
-            height={350}
+            height={240}
             alt='Picture of the author'
-            className='rounded-md'
+            className='rounded-md w-[350px] h-[240px]'
           />
         </Link>
       </div>
@@ -43,9 +43,9 @@ export default function Carousel() {
           <Image
             src='https://sparrownews.in/news/taylor-swift-new-album-red.webp'
             width={350}
-            height={350}
+            height={240}
             alt='Picture of the author'
-            className='rounded-md'
+            className='rounded-md w-[350px] h-[240px]'
           />
         </Link>
       </div>
@@ -54,20 +54,20 @@ export default function Carousel() {
           <Image
             src='https://sparrownews.in/news/power-book-two.webp'
             width={350}
-            height={350}
+            height={240}
             alt='Picture of the author'
-            className='rounded-md'
+            className='rounded-md w-[350px] h-[240px]'
           />
         </Link>
-      </div>{" "}
+      </div>
       <div className='carousel-item'>
         <Link href={""}>
           <Image
             src='https://sparrownews.in/news/power-book-two.webp'
             width={350}
-            height={350}
+            height={240}
             alt='Picture of the author'
-            className='rounded-md'
+            className='rounded-md w-[350px] h-[240px]'
           />
         </Link>
       </div>
