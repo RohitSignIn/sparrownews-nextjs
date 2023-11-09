@@ -1,11 +1,11 @@
-import { connect } from "@/dbConfig/dbConfig";
+import { connect } from "@/config/dbConfig";
 import Posts from "@/models/postModel";
 import { NextRequest, NextResponse } from "next/server";
 
 // Create POST
 export async function POST(req: NextRequest) {
   const reqBody = await req.json();
-  const { title, keywords, description, body } = reqBody;
+  const { title, keywords, description, thumbnailUrl, body } = reqBody;
 
   try {
     if (title && keywords && description && body) {
@@ -13,6 +13,7 @@ export async function POST(req: NextRequest) {
         title,
         keywords,
         description,
+        thumbnailUrl,
         body,
       });
 
@@ -29,9 +30,10 @@ export async function POST(req: NextRequest) {
   }
 }
 
+// Update POST
 export async function PUT(req: NextRequest) {
   const reqBody = await req.json();
-  const { _id, title, keywords, description, body } = reqBody;
+  const { _id, title, keywords, description, thumbnailUrl, body } = reqBody;
   try {
     if (title && keywords && description && body) {
       const updatedPost = await Posts.findByIdAndUpdate(
@@ -40,6 +42,7 @@ export async function PUT(req: NextRequest) {
           title,
           keywords,
           description,
+          thumbnailUrl,
           body,
         },
         { new: true }

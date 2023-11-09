@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const categoriesModel = new mongoose.Schema({
+  catg: Number,
   name: String,
   title: String,
   keywords: String,

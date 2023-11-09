@@ -4,6 +4,7 @@ const postModel = new mongoose.Schema({
   title: String,
   keywords: String,
   description: String,
+  thumbnailUrl: String,
   body: String,
 });
 

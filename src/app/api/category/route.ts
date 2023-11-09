@@ -1,35 +1,40 @@
-import { connect } from "@/dbConfig/dbConfig";
+import { connect } from "@/config/dbConfig";
 import Categories from "@/models/categoryModel";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 connect();
 
 const defaultCatg = [
   {
+    catg: 1,
     name: "news",
     title: "Latest News",
     keywords: "latest news, world news",
     description: "Top 20 News Fastest and Latest Updates",
   },
   {
+    catg: 2,
     name: "entertainment",
     title: "Latest entertainment News",
     keywords: "latest news, world news",
     description: "Top 20 News Fastest and Latest Updates",
   },
   {
+    catg: 3,
     name: "politics",
     title: "Latest politics News",
     keywords: "latest news, world news",
     description: "Top 20 News Fastest and Latest Updates",
   },
   {
+    catg: 4,
     name: "sports",
     title: "Latest sports News",
     keywords: "latest news, world news",
     description: "Top 20 News Fastest and Latest Updates",
   },
   {
+    catg: 5,
     name: "articles",
     title: "Latest articles",
     keywords: "latest news, world news",
