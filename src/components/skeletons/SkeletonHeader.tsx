@@ -2,7 +2,7 @@ import React from "react";
 
 function SkeletonHeader() {
   return (
-    <nav className='fixed h-[48px] top-0 bg-base-300 w-full flex justify-between px-4 py-2 border-b-4 border-base-100 items-center animate-pulse'>
+    <nav className='fixed h-[48px] top-0 bg-base-300 w-full flex justify-between px-4 py-2 border-b-4 border-base-100 items-center animate-pulse z-10'>
       <div className='w-[12rem] h-[1.5rem] bg-neutral rounded-md'></div>
       <div className='flex justify-center gap-4'>
         <div className='w-[3rem] h-[1.5rem] bg-neutral rounded-md'></div>

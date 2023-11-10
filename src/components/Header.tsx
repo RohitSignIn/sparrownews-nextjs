@@ -18,9 +18,9 @@ export default function Header() {
 
   return (
     <>
-      <header className='z-10'>
+      <header>
         {navLinks?.status == "success" ? (
-          <nav className='fixed top-0 bg-base-300 w-full flex justify-between px-4 py-2 border-b-4 border-base-100 items-center'>
+          <nav className='fixed top-0 bg-base-300 w-full flex justify-between px-4 py-2 border-b-4 border-base-100 items-center z-10'>
             <h1 className='text-xl cursor-pointer tracking-wider text-primary'>
               <Link href='/'>SPARROW NEWS</Link>
             </h1>
