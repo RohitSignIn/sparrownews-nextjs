@@ -1,18 +1,33 @@
 import Posts from "@/models/postModel";
 import qs from "qs";
 import { NextRequest, NextResponse } from "next/server";
+import { connect } from "@/config/dbConfig";
+
+connect();
 
 // Fetch Posts
 export async function GET(req: NextRequest) {
   try {
     const noOfRecordsPerPage = 10;
-    const rawParams = req.url.split("?")[1];
-    const params = qs.parse(rawParams);
-    let page: number = Number(params.page);
-    const fetchedPosts = await Posts.find() // search on all data
-      .sort({ _id: -1 }) // reverse the data to get latest record first
-      .skip((page - 1) * noOfRecordsPerPage) // skip the records base on page number
-      .limit(noOfRecordsPerPage); // no of record per page
+    const rawPage = req.url.split("?")[1];
+    const rawCatg = req.url.split("?")[2];
+    const page = Number(qs.parse(rawPage).page);
+    const category = qs.parse(rawCatg).catg;
+
+    let fetchedPosts;
+    if (!category) {
+      // search on all data - If no category is specified
+      fetchedPosts = await Posts.find()
+        .sort({ _id: -1 }) // reverse the data to get latest record first
+        .skip((page - 1) * noOfRecordsPerPage) // skip the records base on page number
+        .limit(noOfRecordsPerPage); // no of record per page
+    } else {
+      // else fetch all data category wise
+      fetchedPosts = await Posts.find({ category })
+        .sort({ _id: -1 }) // reverse the data to get latest record first
+        .skip((page - 1) * noOfRecordsPerPage) // skip the records base on page number
+        .limit(noOfRecordsPerPage); // no of record per page
+    }
 
     return NextResponse.json({
       success: true,

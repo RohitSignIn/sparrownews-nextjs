@@ -1,5 +1,8 @@
 import Categories from "@/models/categoryModel";
 import { NextResponse } from "next/server";
+import { connect } from "@/config/dbConfig";
+
+connect();
 
 const defaultCatg = [
   {

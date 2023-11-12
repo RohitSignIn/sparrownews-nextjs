@@ -7,7 +7,7 @@ export type categoryType = {
   descriptions: String;
 };
 
-export type categoriesInitialType = {
+export type categoriesStateType = {
   categories: categoryType[];
-  status: "loading" | "success";
+  loading: boolean;
 };
