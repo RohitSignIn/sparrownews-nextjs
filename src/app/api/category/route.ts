@@ -1,8 +1,5 @@
-import { connect } from "@/config/dbConfig";
 import Categories from "@/models/categoryModel";
 import { NextResponse } from "next/server";
-
-connect();
 
 const defaultCatg = [
   {

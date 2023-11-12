@@ -1,7 +1,8 @@
 import axiosInstance from "@/config/axiosInstace";
-import categoryType from "@/types/categoryState";
+import { categoriesInitialType } from "@/types/categoryType";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+// ASYNC THUNK STARTS
 export const getCategories = createAsyncThunk("getCategories", async () => {
   try {
     const response = await axiosInstance.get("api/category");
@@ -13,29 +14,18 @@ export const getCategories = createAsyncThunk("getCategories", async () => {
     console.log("Error Occured" + err.message);
   }
 });
+// ASYNC THUNK ENDS
 
-// TYPE Declare Start
-type initialStateType = {
-  categories: categoryType[];
-  status: "loading" | "success";
-};
-// TYPE Declare End
-
-const initialState: initialStateType = {
+const initialState: categoriesInitialType = {
   categories: [],
   status: "loading",
 };
 
+// SLICE STARTS
 const CategorySlice = createSlice({
   name: "categories",
-  initialState: initialState,
-  reducers: {
-    // invalidate: (state, { payload }) => {
-    //   payload.forEach((item) => {
-    //     state[item] = false;
-    //   });
-    // },
-  },
+  initialState,
+  reducers: {},
 
   extraReducers: (builder) =>
     builder
@@ -50,11 +40,7 @@ const CategorySlice = createSlice({
         }
         return state;
       }),
-  //   .addCase(getCategories.rejected, (state, { payload }) => {
-  //     state.loading = false;
-  //     state.error = payload;
-  //   }),
 });
+// SLICE ENDS
 
-// export const { invalidate } = sliceName.actions;
 export default CategorySlice;
