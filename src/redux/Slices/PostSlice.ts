@@ -1,38 +1,54 @@
 import axiosInstance from "@/config/axiosInstace";
-import { postsStateType } from "@/types/postType";
+import { getpostsCons } from "@/constants/apiConstant";
+import {
+  getPostsThunkParams,
+  postType,
+  postsStateType,
+} from "@/types/postType";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState: postsStateType = {
   home: {
     posts: [],
-    loading: false,
   },
   news: {
     posts: [],
-    loading: false,
   },
   entertainment: {
     posts: [],
-    loading: false,
   },
   politics: {
     posts: [],
-    loading: false,
   },
   sports: {
     posts: [],
-    loading: false,
   },
   articles: {
     posts: [],
-    loading: false,
   },
+  loading: true,
 };
 
 // ASYNC THUNK STARTS
-export const getPosts = createAsyncThunk("getPosts", async ({ catg, page }) => {
-  const posts = await axiosInstance.post(catg);
-});
+export const getPosts = createAsyncThunk(
+  "getPosts",
+  async (params: getPostsThunkParams) => {
+    const { page, catg } = params;
+    try {
+      const response = await axiosInstance.get(
+        `${getpostsCons}?page=${page}?catg=${catg}`
+      );
+      if (response.data.success) {
+        return {
+          data: response.data.data,
+          catg: catg,
+        };
+      }
+    } catch (err: any) {
+      console.log("Error Occured: " + err.message);
+    }
+  }
+);
 // ASYNC THUNK ENDS
 
 const PostSlice = createSlice({
@@ -43,11 +59,17 @@ const PostSlice = createSlice({
     builder
       // Fetch Posts
       .addCase(getPosts.pending, (state, { payload }) => {
-        state.home.loading = true;
+        state.loading = true;
       })
       .addCase(getPosts.fulfilled, (state, { payload }) => {
-        state.home.loading = false;
+        state.loading = false;
+        if (payload?.data) {
+          state[payload.catg as keyof typeof initialState]["posts"].push(
+            payload.data
+          );
+        }
+        return state;
       }),
 });
 
-export default PostSlice.reducer;
+export default PostSlice;

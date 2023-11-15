@@ -1,6 +1,7 @@
 import Carousel from "@/components/Carousel";
 import Header from "@/components/Header";
 import PostCard from "@/components/PostCard";
+import PostList from "@/components/PostList";
 import SkeletonCarousel from "@/components/skeletons/SkeletonCarousel";
 import SkeletonPostCard from "@/components/skeletons/SkeletonPostCard";
 
@@ -9,7 +10,7 @@ export default function Home() {
     <>
       <Header />
       <div className='mt-10'>
-        {/* <Carousel /> */}
+        <Carousel />
         <SkeletonCarousel />
       </div>
 
@@ -17,6 +18,8 @@ export default function Home() {
         <SkeletonPostCard />
         <PostCard />
       </div>
+
+      <PostList />
     </>
   );
 }

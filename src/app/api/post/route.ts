@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
     const category = qs.parse(rawCatg).catg;
 
     let fetchedPosts;
-    if (!category) {
+    if (category === "home") {
       // search on all data - If no category is specified
       fetchedPosts = await Posts.find()
         .sort({ _id: -1 }) // reverse the data to get latest record first

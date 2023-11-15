@@ -12,26 +12,28 @@ export type postType = {
 export type postsStateType = {
   home: {
     posts: postType[];
-    loading: boolean;
   };
   news: {
     posts: postType[];
-    loading: boolean;
   };
   entertainment: {
     posts: postType[];
-    loading: boolean;
   };
   politics: {
     posts: postType[];
-    loading: boolean;
   };
   sports: {
     posts: postType[];
-    loading: boolean;
   };
   articles: {
     posts: postType[];
-    loading: boolean;
   };
+  loading: boolean;
+};
+
+export type getPostsThunkRet = String;
+
+export type getPostsThunkParams = {
+  page: number;
+  catg: String;
 };
