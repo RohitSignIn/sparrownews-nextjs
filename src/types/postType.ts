@@ -10,24 +10,12 @@ export type postType = {
 };
 
 export type postsStateType = {
-  home: {
-    posts: postType[];
-  };
-  news: {
-    posts: postType[];
-  };
-  entertainment: {
-    posts: postType[];
-  };
-  politics: {
-    posts: postType[];
-  };
-  sports: {
-    posts: postType[];
-  };
-  articles: {
-    posts: postType[];
-  };
+  home: postType[];
+  news: postType[];
+  entertainment: postType[];
+  politics: postType[];
+  sports: postType[];
+  articles: postType[];
   loading: boolean;
 };
 

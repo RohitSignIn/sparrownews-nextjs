@@ -8,24 +8,12 @@ import {
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState: postsStateType = {
-  home: {
-    posts: [],
-  },
-  news: {
-    posts: [],
-  },
-  entertainment: {
-    posts: [],
-  },
-  politics: {
-    posts: [],
-  },
-  sports: {
-    posts: [],
-  },
-  articles: {
-    posts: [],
-  },
+  home: [],
+  news: [],
+  entertainment: [],
+  politics: [],
+  sports: [],
+  articles: [],
   loading: true,
 };
 
@@ -64,9 +52,7 @@ const PostSlice = createSlice({
       .addCase(getPosts.fulfilled, (state, { payload }) => {
         state.loading = false;
         if (payload?.data) {
-          state[payload.catg as keyof typeof initialState]["posts"].push(
-            payload.data
-          );
+          state[payload.catg as keyof typeof initialState] = payload.data;
         }
         return state;
       }),
