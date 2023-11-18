@@ -1,5 +1,7 @@
+import React from "react";
+
 export type postType = {
-  _id: String;
+  _id: React.Key;
   category: String;
   title: String;
   keywords: String;

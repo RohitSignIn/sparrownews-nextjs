@@ -1,9 +1,7 @@
 import Carousel from "@/components/Carousel";
 import Header from "@/components/Header";
-import PostCard from "@/components/PostCard";
 import PostList from "@/components/PostList";
 import SkeletonCarousel from "@/components/skeletons/SkeletonCarousel";
-import SkeletonPostCard from "@/components/skeletons/SkeletonPostCard";
 
 export default function Home() {
   return (
@@ -13,12 +11,7 @@ export default function Home() {
         <Carousel />
         <SkeletonCarousel />
       </div>
-
-      <div className='flex flex-col items-center'>
-        <SkeletonPostCard />
-        <PostCard />
-      </div>
-
+      {/* <PostCard /> */}
       <PostList />
     </>
   );

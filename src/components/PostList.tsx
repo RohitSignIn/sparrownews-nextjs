@@ -1,15 +1,17 @@
 "use client";
 
 import { getPosts } from "@/redux/Slices/PostSlice";
-import { AppDispatch } from "@/redux/Store";
+import { AppDispatch, RootState } from "@/redux/Store";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import SkeletonPostList from "./skeletons/SkeletonPostList";
+import PostCard from "./PostCard";
 
 function PostList() {
+  const posts = useSelector((state: RootState) => state.posts);
   const dispatch = useDispatch<AppDispatch>();
 
   React.useEffect(() => {
-    console.log("request dispatch");
     const args = {
       page: 2,
       catg: "home",
@@ -17,7 +19,19 @@ function PostList() {
     dispatch(getPosts(args));
   }, []);
 
-  return <div>PostList</div>;
+  return (
+    <div className='flex flex-col items-center'>
+      {posts.loading ? (
+        <SkeletonPostList />
+      ) : (
+        <>
+          {posts.home.map((post) => (
+            <PostCard key={post._id} post={post} />
+          ))}
+        </>
+      )}
+    </div>
+  );
 }
 
 export default PostList;
