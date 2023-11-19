@@ -1,7 +1,13 @@
-function BlogPage({ params }: { params: any }) {
+import Header from "@/components/Header";
+
+function BlogPage({ params }: { params: { category: string; slug: string } }) {
   const slug = params.slug;
 
-  return <article className='mt-12'>{slug}</article>;
+  return;
+  <>
+    <Header />
+    <article className='mt-12'>{slug}</article>;
+  </>;
 }
 
 export default BlogPage;
