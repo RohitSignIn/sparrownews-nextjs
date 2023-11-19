@@ -55,6 +55,7 @@ export async function POST(req: NextRequest) {
         description,
         thumbnailUrl,
         inCarousel: false,
+        isPublished: false,
       });
 
       const savePost = await newPost.save();
@@ -73,31 +74,12 @@ export async function POST(req: NextRequest) {
 // Update POST
 export async function PUT(req: NextRequest) {
   const reqBody = await req.json();
-  const {
-    _id,
-    category,
-    title,
-    slug,
-    keywords,
-    description,
-    thumbnailUrl,
-    inCarousel,
-    body,
-  } = reqBody;
+
   try {
-    if (title && keywords && slug && description && body) {
+    if (reqBody._id) {
       const updatedPost = await Posts.findByIdAndUpdate(
-        _id,
-        {
-          category,
-          title,
-          slug,
-          keywords,
-          description,
-          thumbnailUrl,
-          inCarousel,
-          body,
-        },
+        reqBody._id,
+        reqBody.update,
         { new: true }
       );
 
@@ -110,7 +92,7 @@ export async function PUT(req: NextRequest) {
 
     return NextResponse.json({
       success: false,
-      message: "Missing Fields",
+      message: "Missing Fields, _id not found",
       status: 400,
     });
   } catch (err: any) {
