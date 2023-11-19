@@ -116,6 +116,7 @@ export async function DELETE(req: NextRequest) {
     const { _id } = reqBody;
 
     const deletedPost = await Posts.findByIdAndDelete({ _id: _id });
+    await Blogs.findOneAndDelete({ post_id: _id });
 
     return NextResponse.json({
       success: true,
