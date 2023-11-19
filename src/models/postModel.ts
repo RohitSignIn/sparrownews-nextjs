@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const postModel = new mongoose.Schema({
   category: String,
   title: String,
+  slug: String,
   keywords: String,
   description: String,
   thumbnailUrl: String,

@@ -1,10 +1,6 @@
 import axiosInstance from "@/config/axiosInstace";
 import { getpostsCons } from "@/constants/apiConstant";
-import {
-  getPostsThunkParams,
-  postType,
-  postsStateType,
-} from "@/types/postType";
+import { getPostsThunkParams, postsStateType } from "@/types/postType";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState: postsStateType = {

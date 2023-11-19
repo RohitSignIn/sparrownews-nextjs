@@ -6,7 +6,7 @@ function PostCard({ post }: { post: postType }) {
   console.log(post, "YOBUDDY");
   return (
     <a
-      href='/'
+      href={`/${post.category}/${post.slug}`}
       className='flex flex-col md:flex-row justify-center items-center md:items-start gap-4 bg-base-300 p-4 rounded-md md:w-[80%] m-2'
     >
       <div>

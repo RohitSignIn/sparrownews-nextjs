@@ -42,14 +42,23 @@ export async function GET(req: NextRequest) {
 // Create POST
 export async function POST(req: NextRequest) {
   const reqBody = await req.json();
-  const { category, title, keywords, description, thumbnailUrl, body } =
+  const { category, title, slug, keywords, description, thumbnailUrl, body } =
     reqBody;
 
   try {
-    if (category && title && keywords && description && thumbnailUrl && body) {
+    if (
+      category &&
+      title &&
+      slug &&
+      keywords &&
+      description &&
+      thumbnailUrl &&
+      body
+    ) {
       const newPost = new Posts({
         category,
         title,
+        slug,
         keywords,
         description,
         thumbnailUrl,
@@ -77,6 +86,7 @@ export async function PUT(req: NextRequest) {
     _id,
     category,
     title,
+    slug,
     keywords,
     description,
     thumbnailUrl,
@@ -84,12 +94,13 @@ export async function PUT(req: NextRequest) {
     body,
   } = reqBody;
   try {
-    if (title && keywords && description && body) {
+    if (title && keywords && slug && description && body) {
       const updatedPost = await Posts.findByIdAndUpdate(
         _id,
         {
           category,
           title,
+          slug,
           keywords,
           description,
           thumbnailUrl,

@@ -13,7 +13,7 @@ function PostList() {
 
   React.useEffect(() => {
     const args = {
-      page: 2,
+      page: 1,
       catg: "home",
     };
     dispatch(getPosts(args));

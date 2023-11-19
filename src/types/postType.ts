@@ -4,6 +4,7 @@ export type postType = {
   _id: React.Key;
   category: String;
   title: String;
+  slug: String;
   keywords: String;
   description: String;
   thumbnailUrl: String;
