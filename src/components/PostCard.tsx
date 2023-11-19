@@ -1,11 +1,11 @@
 import { postType } from "@/types/postType";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function PostCard({ post }: { post: postType }) {
-  console.log(post, "YOBUDDY");
   return (
-    <a
+    <Link
       href={`/${post.category}/${post.slug}`}
       className='flex flex-col md:flex-row justify-center items-center md:items-start gap-4 bg-base-300 p-4 rounded-md md:w-[80%] m-2'
     >
@@ -22,7 +22,7 @@ function PostCard({ post }: { post: postType }) {
         <h3 className='text-xl font-bold'>{post.title}</h3>
         <p>{post.description}</p>
       </div>
-    </a>
+    </Link>
   );
 }
 

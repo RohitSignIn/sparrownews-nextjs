@@ -12,7 +12,7 @@ export default function Home() {
         <SkeletonCarousel />
       </div>
       {/* <PostCard /> */}
-      <PostList />
+      <PostList catg='home' />
     </>
   );
 }
