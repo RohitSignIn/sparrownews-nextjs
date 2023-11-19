@@ -42,19 +42,11 @@ export async function GET(req: NextRequest) {
 // Create POST
 export async function POST(req: NextRequest) {
   const reqBody = await req.json();
-  const { category, title, slug, keywords, description, thumbnailUrl, body } =
+  const { category, title, slug, keywords, description, thumbnailUrl } =
     reqBody;
 
   try {
-    if (
-      category &&
-      title &&
-      slug &&
-      keywords &&
-      description &&
-      thumbnailUrl &&
-      body
-    ) {
+    if (category && title) {
       const newPost = new Posts({
         category,
         title,
@@ -63,7 +55,6 @@ export async function POST(req: NextRequest) {
         description,
         thumbnailUrl,
         inCarousel: false,
-        body,
       });
 
       const savePost = await newPost.save();
