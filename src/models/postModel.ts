@@ -8,6 +8,7 @@ const postModel = new mongoose.Schema({
   description: String,
   thumbnailUrl: String,
   inCarousel: Boolean,
+  isPublished: Boolean,
 });
 
 const Posts = mongoose.models.posts || mongoose.model("posts", postModel);
