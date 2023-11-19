@@ -28,9 +28,9 @@ export async function PUT(req: NextRequest) {
   const reqBody = await req.json();
 
   try {
-    if (reqBody._id) {
-      const updatedBlog = await Blogs.findByIdAndUpdate(
-        reqBody._id,
+    if (reqBody.findby) {
+      const updatedBlog = await Blogs.findOneAndUpdate(
+        reqBody.findby,
         reqBody.update,
         { new: true }
       );

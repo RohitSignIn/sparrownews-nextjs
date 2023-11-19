@@ -2,6 +2,7 @@ import Posts from "@/models/postModel";
 import qs from "qs";
 import { NextRequest, NextResponse } from "next/server";
 import { connect } from "@/config/dbConfig";
+import Blogs from "@/models/blogModel";
 
 connect();
 
@@ -46,7 +47,7 @@ export async function POST(req: NextRequest) {
     reqBody;
 
   try {
-    if (category && title) {
+    if (category && title && slug) {
       const newPost = new Posts({
         category,
         title,
@@ -59,6 +60,14 @@ export async function POST(req: NextRequest) {
       });
 
       const savePost = await newPost.save();
+
+      // Creating an empty blog on new post creation -- START
+      const newBlog = new Blogs({
+        post_id: savePost._id,
+        slug,
+      });
+      await newBlog.save();
+      // Creating an empty blog on new post creation -- END
 
       return NextResponse.json({
         success: true,
