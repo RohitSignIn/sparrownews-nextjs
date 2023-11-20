@@ -1,15 +1,13 @@
 import axiosInstance from "@/config/axiosInstace";
 import { getBlogCons } from "@/constants/apiConstant";
-import { blogStateType, getBlogThunkParams } from "@/types/blogType";
+import { blogStateType } from "@/types/blogType";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const getBlog = createAsyncThunk(
   "getBlog",
-  async ({ params }: { params: getBlogThunkParams }) => {
+  async ({ slug }: { slug: string }) => {
     try {
-      const response = await axiosInstance.get(
-        `${getBlogCons}?slug=${params.slug}`
-      );
+      const response = await axiosInstance.get(`${getBlogCons}?slug=${slug}`);
 
       console.log(response);
 
