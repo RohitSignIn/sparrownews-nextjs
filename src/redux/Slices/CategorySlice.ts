@@ -5,7 +5,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState: categoriesStateType = {
   categories: [],
-  loading: false,
+  loading: true,
 };
 
 // ASYNC THUNK STARTS

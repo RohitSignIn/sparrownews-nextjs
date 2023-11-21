@@ -9,7 +9,6 @@ export type postType = {
   description: String;
   thumbnailUrl: String;
   inCarousel: Boolean;
-  body: String;
 };
 
 export type postsStateType = {

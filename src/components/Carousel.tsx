@@ -1,8 +1,19 @@
+"use client";
+
+import { getCarousels } from "@/redux/Slices/CarouselSlice";
+import { AppDispatch } from "@/redux/Store";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 export default function Carousel() {
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(getCarousels());
+  }, []);
+
   return (
     <div className='carousel gap-2 rounded-box py-4 mx-4'>
       <div className='carousel-item'>
