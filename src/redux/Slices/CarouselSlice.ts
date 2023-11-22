@@ -37,7 +37,6 @@ const CarouselSlice = createSlice({
       .addCase(getCarousels.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.posts = [];
-        console.log(payload, payload.length);
         if (payload.length) {
           state.posts = payload;
         }

@@ -9,7 +9,6 @@ export default function Home() {
       <Header />
       <div className='mt-10'>
         <Carousel />
-        <SkeletonCarousel />
       </div>
       {/* <PostCard /> */}
       <PostList catg='home' />
