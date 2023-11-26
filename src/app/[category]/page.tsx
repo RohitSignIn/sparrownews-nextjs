@@ -1,4 +1,4 @@
-import Header from "@/components/Header";
+import MainLayout from "@/Layout/MainLayout";
 import PostList from "@/components/PostList";
 
 function CategoryPage({ params }: { params: { category: string } }) {
@@ -6,10 +6,11 @@ function CategoryPage({ params }: { params: { category: string } }) {
 
   return (
     <>
-      <Header />
-      <div className='mt-12'>
-        <PostList catg={catg} />
-      </div>
+      <MainLayout>
+        <div className='mt-12'>
+          <PostList catg={catg} />
+        </div>
+      </MainLayout>
     </>
   );
 }

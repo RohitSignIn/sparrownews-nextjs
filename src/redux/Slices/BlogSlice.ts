@@ -8,10 +8,9 @@ export const getBlog = createAsyncThunk(
   async ({ slug }: { slug: string }) => {
     try {
       const response = await axiosInstance.get(`${getBlogCons}?slug=${slug}`);
-
-      console.log(response);
-
-      return response.data;
+      if (response.status === 200) {
+        return response.data.data;
+      }
     } catch (err: any) {
       console.log("Error Occured: " + err.message);
     }
@@ -19,7 +18,12 @@ export const getBlog = createAsyncThunk(
 );
 
 const initialState: blogStateType = {
-  blogs: [],
+  blog: {
+    _id: "string",
+    post_id: "string",
+    slug: "string",
+    blog: "string",
+  },
   loading: true,
 };
 
@@ -34,6 +38,8 @@ const BlogSlice = createSlice({
       })
       .addCase(getBlog.fulfilled, (state, { payload }) => {
         state.loading = false;
+        state.blog = payload;
+        return state;
       }),
   //   .addCase(actionName.rejected, (state, { payload }) => {
   //     state.loading = false;

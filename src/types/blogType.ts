@@ -5,7 +5,12 @@ export type blogType = {
 };
 
 export type blogStateType = {
-  blogs: blogType[];
+  blog: {
+    _id: string;
+    post_id: string;
+    slug: string;
+    blog: string;
+  };
   loading: boolean;
 };
 
