@@ -1,5 +1,7 @@
+import AdminLayout from "@/Layout/AdminLayout";
+
 function AddPost() {
-  return <div>AddPost</div>;
+  return <AdminLayout>Hello</AdminLayout>;
 }
 
 export default AddPost;

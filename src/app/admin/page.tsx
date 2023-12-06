@@ -4,9 +4,7 @@ import React from "react";
 function Admin() {
   return (
     <>
-      <div className='w-full h-screen'>
-        <AdminLayout>Hello</AdminLayout>
-      </div>
+      <AdminLayout>Hello</AdminLayout>
     </>
   );
 }
