@@ -1,5 +1,4 @@
 import Sidebar from "@/components/AdminComp/Sidebar";
-import Link from "next/link";
 import React from "react";
 
 function AdminLayout({ children }: { children: React.ReactNode }) {
