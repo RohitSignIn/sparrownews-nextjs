@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
     let fetchedPosts;
     if (category === "home") {
       // search on all data - If no category is specified
-      fetchedPosts = await Posts.find()
+      fetchedPosts = await Posts.find({ isPublished: true })
         .sort({ _id: -1 }) // reverse the data to get latest record first
         .skip((page - 1) * noOfRecordsPerPage) // skip the records base on page number
         .limit(noOfRecordsPerPage); // no of record per page
